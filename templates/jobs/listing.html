@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Jobs{% endblock %}
+
+{% block content %}
+<div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+
+          {% for job in jobs.all %}
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="{{ job.job_title }}" />
+              <div class="card-body">
+                <p class="card-text">{{ job.job_descripttion }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

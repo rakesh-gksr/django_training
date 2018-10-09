@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for job in jobs.all %}
+<div class="row pt-3">
+  <div class="col-2" onclick="window.location='{% url 'detail' job.id %}';" style="cursor: pointer;">
+    <img src="{{ job.icon.url }}" class="img-fluid" />
+  </div>
+  <div class="col-6" onclick="window.location='{% url 'detail' job.id %}';" style="cursor: pointer;">
+    <h1>{{ job.title }}</h1>
+    <p>{{ job.summary }}</p>
+  </div>
+ <!--  <div class="col-4">
+    <a href="javascript:{document.getElementById('upvote{{ job.id }}').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Upvote {{ job.votes_total }}</button></a>
+  </div> -->
+</div>
+
+<form id="upvote{{ job.id }}" method="POST" action="{% url 'upvote' job.id %}">
+  {% csrf_token%}
+  <input type="hidden">
+</form>
+{% endfor %}
+
+{% endblock %}
