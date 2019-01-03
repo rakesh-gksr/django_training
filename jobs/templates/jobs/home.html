@@ -11,15 +11,8 @@
     <h1>{{ job.title }}</h1>
     <p>{{ job.summary }}</p>
   </div>
- <!--  <div class="col-4">
-    <a href="javascript:{document.getElementById('upvote{{ job.id }}').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Upvote {{ job.votes_total }}</button></a>
-  </div> -->
+ 
 </div>
-
-<form id="upvote{{ job.id }}" method="POST" action="{% url 'upvote' job.id %}">
-  {% csrf_token%}
-  <input type="hidden">
-</form>
 {% endfor %}
 
 {% endblock %}

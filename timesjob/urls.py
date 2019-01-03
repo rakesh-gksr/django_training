@@ -20,18 +20,23 @@ from django.urls import path, include
 import jobs.views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('home/', jobs.views.home, name='home'),
-    path('', jobs.views.list, name='list'),
+    path('', jobs.views.home, name='home'),
     path('accounts/', include('accounts.urls')),
-    path('jobs/', include('jobs.urls')),
-    
+    path('', include('snippets.urls')),
+
 
 ]
+urlpatterns += i18n_patterns(
+    path('jobs/', include('jobs.urls')),
+)
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # urlpatterns += [
 #     path('accounts/', include('django.contrib.auth.urls')),
 # ]

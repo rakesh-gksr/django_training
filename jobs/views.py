@@ -2,14 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Jobs, Job
+from django.http import HttpResponse
+from django.utils.translation import gettext as _
 
-def list(request):
-    jobs = Jobs.objects
-    return render(request, 'jobs/listing.html', {'jobs':jobs})
 
 def home(request):
-    jobs = Jobs.objects
-    return render(request, 'jobs/listing.html', {'jobs':jobs})
+    jobs = Job.objects
+    return render(request, 'jobs/home.html', {'jobs':jobs})
 
 @login_required(login_url="/accounts/signup")
 def create(request):
@@ -22,6 +21,8 @@ def create(request):
                 job.url = request.POST['url']
             else:
                 job.url = 'http://' + request.POST['url']
+            print("request.FILES==>")
+            print(request.FILES)
             job.icon = request.FILES['icon']
             job.image = request.FILES['image']
             job.pub_date = timezone.datetime.now()
@@ -36,14 +37,18 @@ def create(request):
         return render(request, 'jobs/create.html')
 
 def detail(request, job_id):
-    job = get_object_or_404(job, pk=job_id)
+    job = get_object_or_404(Job, pk=job_id)
     return render(request, 'jobs/detail.html',{'job':job})
 
 @login_required(login_url="/accounts/signup")
 def update(request, job_id):
     if request.method == 'POST':
-        job = get_object_or_404(job, pk=job_id)
+        job = get_object_or_404(Job, pk=job_id)
         job.votes_total += 1
         job.save()
         return redirect('/jobs/' + str(job.id))
 
+def my_view(request):
+    words = ['Welcome', 'to', 'my', 'site.']
+    output = _(' '.join(words))
+    return HttpResponse(output)
