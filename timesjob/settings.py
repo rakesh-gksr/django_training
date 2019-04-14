@@ -33,7 +33,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'jobs.apps.JobsConfig',
-    'user.apps.UserConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,8 +41,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'snippets.apps.SnippetsConfig',
     'rental.apps.RentalConfig',
-    'djoser',
     'rest_framework.authtoken',
+    'ExampleView.apps.ExampleviewConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -97,7 +97,7 @@ DATABASES = {
         'USER':'postgres',
         'PASSWORD':'10201182me',
         'HOST':'localhost',
-        'PORT':'5433',
+        'PORT':'5432',
     }
 }
 
@@ -123,6 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
