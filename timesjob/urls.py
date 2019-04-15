@@ -21,13 +21,11 @@ import jobs.views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
-from ExampleView import views as ex_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('ExampleView.urls')),
-    # path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('', include('ExampleView.urls')),
     path('home/', jobs.views.home, name='home'),
     path('', jobs.views.home, name='home'),
     path('accounts/', include('accounts.urls')),

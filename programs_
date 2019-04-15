@@ -1,0 +1,348 @@
+
+
+Q. Python Program to Find HCF or GCD
+# Python program to find the H.C.F of two input number
+
+# define a function
+def computeHCF(x, y):
+
+# choose the smaller number
+    if x > y:
+        smaller = y
+    else:
+        smaller = x
+    for i in range(1, smaller+1):
+        if((x % i == 0) and (y % i == 0)):
+            hcf = i
+
+    return hcf
+
+num1 = 54
+num2 = 24
+
+# take input from the user
+# num1 = int(input("Enter first number: "))
+# num2 = int(input("Enter second number: "))
+
+print("The H.C.F. of", num1,"and", num2,"is", computeHCF(num1, num2))
+
+Q. Python Program to Check Prime Number:
+Ans: A positive integer greater than 1 which has no other factors except 1 and the number itself is called a prime number. 2, 3, 5, 7 etc. are prime numbers as they do not have any other factors. But 6 is not prime (it is composite) since, 2 x 3 = 6
+num = 407
+
+# take input from the user
+num = int(input("Enter a number: "))
+
+# prime numbers are greater than 1
+if num > 1:
+   # check for factors
+   for i in range(2,num):
+       if (num % i) == 0:
+           print(num,"is not a prime number")
+           print(i,"times",num//i,"is",num)
+           break
+   else:
+       print(num,"is a prime number")
+
+# if input number is less than
+# or equal to 1, it is not prime
+else:
+   print(num,"is not a prime number")
+
+Q. Longest Common Prefix using Binary Search
+Input  : {“geeksforgeeks”, “geeks”, “geek”, “geezer”}
+Output : "gee"
+
+Input  : {"apple", "ape", "april"}
+Output : "ap"
+Ans:
+
+
+
+Q. How will you use Python to read a random line from a file?
+
+Ans. We can borrow the choice() method from the random module for this.
+
+>>> import random
+>>> lines=open('tabs.txt').read().splitlines()
+>>> random.choice(lines)
+
+Q. How will you convert a list into a string?
+>>> nums=['one','two','three','four','five','six','seven']
+>>> s=' '.join(nums)
+>>> s
+
+Q Write a program to reverse a number in Python?
+
+A) Python Program to Reverse a Number:
+
+n=int(input(“Enter number: “))
+rev=0
+while(n>0):
+dig=n%10
+rev=rev*10+dig
+n=n//10
+print(“Reverse of the number:”,rev)
+
+Output:
+
+Enter number: 143
+Reverse of the number: 341
+
+
+23) Write a program to find sum of the digits of a number in Python?
+
+A) Python Program to Find Sum of the Digits of a Number
+
+n=int(input(“Enter a number:”))
+tot=0
+while(n>0):
+dig=n%10
+tot=tot+dig
+n=n//10
+print(“The total sum of digits is:”,tot)
+
+Output:
+
+Enter a number:1928
+The total sum of digits is: 20
+
+24) Write a Python Program to Check if a Number is a Palindrome or not?
+
+A) Python Program to Check if a Number is a Palindrome or Not:
+
+n=int(input(“Enter number:”))
+temp=n
+rev=0
+while(n>0):
+dig=n%10
+rev=rev*10+dig
+n=n//10
+if(temp==rev):
+print(“The number is a palindrome!”)
+else:
+print(“The number isn’t a palindrome!”)
+
+Output:
+
+Enter number:151
+The number is a palindrome!
+
+25) Write a Python Program to Count the Number of Digits in a Number?
+
+A) Python Program to Count the Number of Digits in a Number:
+
+n=int(input(“Enter number:”))
+count=0
+while(n>0):
+count=count+1
+n=n//10
+print(“The number of digits in the number are:”,count)
+
+Output:
+
+Enter number:14325
+The number of digits in the number are: 5
+
+26) Write a Python Program to Print Table of a Given Number?
+
+A) Python Program to Print Table of a Given Number:
+
+n=int(input(“Enter the number to print the tables for:”))
+for i in range(1,11):
+print(n,”x”,i,”=”,n*i)
+
+Output:
+
+Enter the number to print the tables for:7
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+
+27) Write a Python Program to Check if a Number is a Prime Number?
+
+A) Python Program to Check if a Number is a Prime Number:
+
+a=int(input(“Enter number: “))
+k=0
+for i in range(2,a//2+1):
+if(a%i==0):
+k=k+1
+if(k<=0):
+print(“Number is prime”)
+else:
+print(“Number isn’t prime”)
+
+Output:
+
+Enter number: 7
+Number is prime
+
+28) Write a Python Program to Check if a Number is an Armstrong Number?
+
+A) Python Program to Check if a Number is an Armstrong Number:
+
+n=int(input(“Enter any number: “))
+a=list(map(int,str(n)))
+b=list(map(lambda x:x**3,a))
+if(sum(b)==n):
+print(“The number is an armstrong number. “)
+else:
+print(“The number isn’t an arsmtrong number. “)
+
+Output:
+
+Enter any number: 371
+The number is an armstrong number.
+
+29) Write a Python Program to Check if a Number is a Perfect Number?
+
+A) Python Program to Check if a Number is a Perfect Number:
+
+n = int(input(“Enter any number: “))
+sum1 = 0
+for i in range(1, n):
+if(n % i == 0):
+sum1 = sum1 + i
+if (sum1 == n):
+print(“The number is a Perfect number!”)
+else:
+print(“The number is not a Perfect number!”)
+
+Output:
+
+Enter any number: 6
+The number is a Perfect number!
+
+
+30) Write a Python Program to Check if a Number is a Strong Number?
+
+A) Python Program to Check if a Number is a Strong Number:
+
+sum1=0
+num=int(input(“Enter a number:”))
+temp=num
+while(num):
+i=1
+f=1
+r=num%10
+while(i<=r):
+f=f*i
+i=i+1
+sum1=sum1+f
+num=num//10
+if(sum1==temp):
+print(“The number is a strong number”)
+else:
+print(“The number is not a strong number”)
+
+Output:
+
+Enter a number:145
+The number is a strong number.
+
+31) Write a Python Program to Find the Second Largest Number in a List?
+
+A) Python Program to Find the Second Largest Number in a List:
+
+a=[]
+n=int(input(“Enter number of elements:”))
+for i in range(1,n+1):
+b=int(input(“Enter element:”))
+a.append(b)
+a.sort()
+print(“Second largest element is:”,a[n-2])
+
+Output:
+
+Enter number of elements:4
+Enter element:23
+Enter element:56
+Enter element:39
+Enter element:11
+Second largest element is: 39
+
+32) Write a Python Program to Swap the First and Last Value of a List?
+
+A) Python Program to Swap the First and Last Value of a List:
+
+a=[]
+n= int(input(“Enter the number of elements in list:”))
+for x in range(0,n):
+element=int(input(“Enter element” + str(x+1) + “:”))
+a.append(element)
+temp=a[0]
+a[0]=a[n-1]
+a[n-1]=temp
+print(“New list is:”)
+print(a)
+
+Output:
+
+Enter the number of elements in list:4
+Enter element1:23
+Enter element2:45
+Enter element3:67
+Enter element4:89
+New list is:
+[89, 45, 67, 23]
+
+33) Write a Python Program to Check if a String is a Palindrome or Not?
+
+A) Python Program to Check if a String is a Palindrome or Not:
+
+string=raw_input(“Enter string:”)
+if(string==string[::-1]):
+print(“The string is a palindrome”)
+else:
+print(“The string isn’t a palindrome”)
+
+Output:
+
+Enter string:malayalam
+The string is a palindrome
+
+34) Write a Python Program to Count the Number of Vowels in a String?
+
+A) Python Program to Count the Number of Vowels in a String:
+
+string=raw_input(“Enter string:”)
+vowels=0
+for i in string:
+if(i==’a’ or i==’e’ or i==’i’ or i==’o’ or i==’u’ or i==’A’ or i==’E’ or i==’I’ or i==’O’ or i==’U’):
+vowels=vowels+1
+print(“Number of vowels are:”)
+print(vowels)
+
+Output:
+
+Enter string:Hello world
+Number of vowels are:
+3
+
+35) Write a Python Program to Check Common Letters in Two Input Strings?
+
+A) Python Program to Check Common Letters in Two Input Strings:
+
+s1=raw_input(“Enter first string:”)
+s2=raw_input(“Enter second string:”)
+a=list(set(s1)&set(s2))
+print(“The common letters are:”)
+for i in a:
+print(i)
+
+Output:
+
+Enter first string:Hello
+Enter second string:How are you
+The common letters are:
+H
+e
+o
