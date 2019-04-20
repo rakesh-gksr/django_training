@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
+from snippets import log
 
 
 from snippets.models import Snippet
@@ -16,9 +17,14 @@ def snippet_list(request):
     """
     List all code snippets, or create a new snippet.
     """
+    log.info("*********1234 dfgsdfgdsfgsdfgd")
+    log.error("******1234 dfgsdfgdsfgsdfgd")
+    log.debug("****dfgsdfgdsfgsdfgd")
+    log.info("request.method %s" % request.method)
     if request.method == 'GET':
         snippets = Snippet.objects.all()
         serializer = SnippetSerializer(snippets, many=True)
+        log.info("rserializer.data %s" % serializer.data)
         return Response(serializer.data)
 
     elif request.method == 'POST':
@@ -34,6 +40,7 @@ def snippet_detail(request, pk):
     """
     Retrieve, update or delete a code snippet.
     """
+    log.debug("1234 dfgsdfgdsfgsdfgd")
     try:
         snippet = Snippet.objects.get(pk=pk)
     except Snippet.DoesNotExist:

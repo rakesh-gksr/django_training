@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1g0%9!j(^@xl-(+h91_s1xj&u@z60!4syh*jm83^5s4$r2b&68'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rental.apps.RentalConfig',
     'rest_framework.authtoken',
     'ExampleView.apps.ExampleviewConfig',
+    'mercury.apps.MercuryConfig',
 
 ]
 
@@ -137,9 +138,9 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-#LANGUAGE_CODE = 'fi'
 
 TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

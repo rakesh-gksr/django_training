@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import jobs.views
+import mercury.views as mercury_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
@@ -28,6 +29,7 @@ urlpatterns = [
     path('', include('ExampleView.urls')),
     path('home/', jobs.views.home, name='home'),
     path('', jobs.views.home, name='home'),
+    path('auth/user_tokens', mercury_views.user_token, name='home'),
     path('accounts/', include('accounts.urls')),
     path('', include('snippets.urls')),
     path('', include('rental.urls')),
