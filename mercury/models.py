@@ -5,6 +5,9 @@ class UserToken(models.Model):
 
     token = models.CharField(max_length=225, primary_key=True)
     user_id = models.CharField(max_length=500, unique=True)
+    name = models.CharField(max_length=500, blank=True, default='')
+    surname = models.CharField(max_length=500, blank=True, default='')
+    city = models.CharField(max_length=500, blank=True, default='')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     def __str__(self):
