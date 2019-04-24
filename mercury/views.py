@@ -14,7 +14,7 @@ def user_token(request):
     token = UserToken.objects.filter(user_id='vipul.jain12@db.com')
     for token in token:
         result = {
-            "created": formats.date_format(token.created, 'd-m-y H:i:s T'),
+            "created": formats.date_format(token.created, 'd-m-Y H:i:s'),
             "user_id": token.user_id,
             "token": token.token,
             'expire': int(utils.get_expiry(token.created, utils.user_token_exiration_duration_min))
