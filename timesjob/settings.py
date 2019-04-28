@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1g0%9!j(^@xl-(+h91_s1xj&u@z60!4syh*jm83^5s4$r2b&68'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'ExampleView.apps.ExampleviewConfig',
     'mercury.apps.MercuryConfig',
+    'rest_framework_swagger',
 
 ]
 
@@ -131,7 +132,15 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.AllowAny',
     ),
+     # Parser classes priority-wise for Swagger
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.JSONParser',
+    ],
 }
+
+
 
 
 # Internationalization
@@ -140,7 +149,6 @@ REST_FRAMEWORK = {
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
-TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
