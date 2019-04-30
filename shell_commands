@@ -1,0 +1,23 @@
+hecks if file exists; is true even if file is a directory but exists.	[ -e $file ] is true.
+https://tecadmin.net/tutorial/bash-scripting/bash-include-files/
+
+if [$HOSTNAME == "foo"]; then
+    echo "success"
+else
+    echo "failure"
+fi
+
+source other-file.sh
+
+https://www.cyberciti.biz/faq/linux-unix-displaying-files-in-shell-script/
+
+https://linuxhint.com/read_file_line_by_line_bash/
+
+#!/bin/bash
+filename='company.txt'
+n=1
+while read line; do
+# reading each line
+echo "Line No. $n : $line"
+n=$((n+1))
+done < $filename
